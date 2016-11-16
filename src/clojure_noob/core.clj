@@ -29,6 +29,7 @@
   (println (add 2 45)))
 
 (defn toss
+
   "Returns a heads or tails"
   []
   (if (> (rand) 0.5)
@@ -51,3 +52,12 @@
 (defn factorial-fun
   [n]
   (reduce * 1 (range 1 (+ n 1))))
+
+(defmacro backwards
+  [form]
+  (reverse form))
+
+(defmacro infix
+  [[o1 op1 o2 op2 o3 op3 o4]]
+  (list op1 (list op3 (list op2 o2 o3) o4) o1))
+
