@@ -37,18 +37,18 @@
     "Tails!"))
 
 
-(defn prob 
-  [n] 
+(defn prob
+  [n]
   (/ (count (filter #(= % "Heads!") (take n (repeatedly toss)))) (float n)))
 
 (defn factorial
   ([n]
    (factorial n 1))
   ([n acc]
-   (if (= n 0) 
+   (if (= n 0)
      acc
      (recur (- n 1) (* n acc)))))
-  
+
 (defn factorial-fun
   [n]
   (reduce * 1 (range 1 (+ n 1))))
@@ -60,4 +60,22 @@
 (defmacro infix
   [[o1 op1 o2 op2 o3 op3 o4]]
   (list op1 (list op3 (list op2 o2 o3) o4) o1))
+
+
+(defmacro my-print
+  [exp]
+  `(let [result# ~exp]
+     (println result#)
+     result#))
+
+(defmacro code-critic
+  [bad good]
+  `(do (println "Bad code: "
+                (quote ~bad))
+       (println "Good code: "
+                (quote ~good))))
+
+
+(my-print (* 2 3))
+
 
